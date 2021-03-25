@@ -64,7 +64,7 @@ public class ListAdapter_BTLE_Devices extends ArrayAdapter<BTLE_Device> {
                     tv_macaddr.setText("No Address");
                 }
 
-
+///////
         return convertView;
     }
 
