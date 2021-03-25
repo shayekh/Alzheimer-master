@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "546621783034",
+    "firebase_url": "https://alzheimer-app-13af1.firebaseio.com",
+    "project_id": "alzheimer-app-13af1",
+    "storage_bucket": "alzheimer-app-13af1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546621783034:android:13554a8ba90bbfecae8243",
+        "android_client_info": {
+          "package_name": "android.kaviles.bletutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546621783034-skao2pmng13kudioa5dviqtl3au9c7u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLktHUAZC4bLEmH9rnN1m7Bo6_tF1CDro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546621783034-skao2pmng13kudioa5dviqtl3au9c7u9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
