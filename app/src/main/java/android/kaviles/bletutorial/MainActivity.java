@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(mBTDevicesArrayList.size()>0)
                 {
                     BTLE_Device words= mBTDevicesArrayList.get(0);
+
                     if(placeName.equals("A Place (EX : Cardiac Center)") && words.getName().equals("Smart Watch 5"))
                     {
                         Toast.makeText(MainActivity.this,"Go South", Toast.LENGTH_LONG).show();
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     {
                         Toast.makeText(MainActivity.this, "Outer Signal"+words.getName(), Toast.LENGTH_LONG).show();
                     }
+
                 }
 
                 else {
