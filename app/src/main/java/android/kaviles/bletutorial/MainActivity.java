@@ -39,10 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private HashMap<String, BTLE_Device> mBTDevicesHashMap;
     private ArrayList<BTLE_Device> mBTDevicesArrayList;
-    private ListAdapter_BTLE_Devices adapter;
+   // private ListAdapter_BTLE_Devices adapter;
 
     private Button btn_Scan;
     private String placeName;
+    private ImageView tapImage;
+    private TextView tv_name,tv_rssi,tv_macaddr;
 
     private BroadcastReceiver_BTState mBTStateUpdateReceiver;
     private Scanner_BTLE mBTLeScanner;
@@ -87,15 +89,77 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBTDevicesHashMap = new HashMap<>();
         mBTDevicesArrayList = new ArrayList<>();
 
-        adapter = new ListAdapter_BTLE_Devices(this, R.layout.btle_device_list_item, mBTDevicesArrayList);
+       // adapter = new ListAdapter_BTLE_Devices(this, R.layout.btle_device_list_item, mBTDevicesArrayList);
 
-        ListView listView = new ListView(this);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
+//        ListView listView = new ListView(this);
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(this);
 
         btn_Scan = (Button) findViewById(R.id.btn_scan);
-        ((ScrollView) findViewById(R.id.scrollView)).addView(listView);
+        tapImage= (ImageView) findViewById(R.id.img_tap);
+        //((ScrollView) findViewById(R.id.scrollView)).addView(listView);
         findViewById(R.id.btn_scan).setOnClickListener(this);
+
+        tv_name = (TextView) findViewById(R.id.tv_name);
+
+        tv_rssi = (TextView) findViewById(R.id.tv_rssi);
+
+
+        tv_macaddr = (TextView) findViewById(R.id.tv_macaddr);
+
+        tapImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mBTDevicesArrayList.size()>0)
+                {
+                    BTLE_Device words= mBTDevicesArrayList.get(0);
+                    if(placeName.equals("A Place (EX : Cardiac Center)") && words.getName().equals("Smart Watch 5"))
+                    {
+                        Toast.makeText(MainActivity.this,"Go South", Toast.LENGTH_LONG).show();
+                        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.gotostraight);
+                        if(mediaPlayer!=null) {
+                            mediaPlayer.start();
+
+                        }
+                    }
+                    else if(placeName.equals("B Place (EX : Report Delivery Center)") && words.getName().equals("Smart Watch 5"))
+                    {
+                        Toast.makeText(MainActivity.this,"Go North", Toast.LENGTH_LONG).show();
+                        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.goright);
+                        if(mediaPlayer!=null) {
+                            mediaPlayer.start();
+                        }
+                    }
+                    else if(placeName.equals("C Place (EX : Pharmacy)") && words.getName().equals("Smart Watch 5"))
+                    {
+                        Toast.makeText(MainActivity.this,"Go East", Toast.LENGTH_LONG).show();
+                        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.goleft);
+                        if(mediaPlayer!=null) {
+                            mediaPlayer.start();
+                        }
+                    }
+                    else if(placeName.equals("D Place (EX : Exit)") && words.getName().equals("Smart Watch 5"))
+                    {
+                        Toast.makeText(MainActivity.this,"Go West", Toast.LENGTH_LONG).show();
+                        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.turn);
+                        if(mediaPlayer!=null) {
+                            mediaPlayer.start();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, "Outer Signal"+words.getName(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                else {
+                    Toast.makeText(MainActivity.this, "Scan First", Toast.LENGTH_LONG).show();
+                }
+
+
+
+            }
+        });
 
 
 
@@ -158,6 +222,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
+
 
     /**
      * Called when an item in the ListView is clicked.
@@ -252,7 +319,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Collections.sort(mBTDevicesArrayList);
         Collections.reverse(mBTDevicesArrayList);
 
-        adapter.notifyDataSetChanged();
+        if(mBTDevicesArrayList.size()!=0) {
+            if (mBTDevicesArrayList.get(0).getName() != null && mBTDevicesArrayList.get(0).getName().length() > 0) {
+                tv_name.setText(mBTDevicesArrayList.get(0).getName());
+            } else {
+                tv_name.setText("No Name");
+            }
+
+            tv_rssi.setText("RSSI: " + Integer.toString(mBTDevicesArrayList.get(0).getRSSI()));
+            if (mBTDevicesArrayList.get(0).getAddress() != null && mBTDevicesArrayList.get(0).getAddress().length() > 0) {
+                tv_macaddr.setText(mBTDevicesArrayList.get(0).getAddress());
+            } else {
+                tv_macaddr.setText("No Address");
+            }
+        }
+
+        //adapter.notifyDataSetChanged();
     }
 
     /**
@@ -266,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBTDevicesArrayList.clear();
         mBTDevicesHashMap.clear();
 
-        adapter.notifyDataSetChanged();
+        //adapter.notifyDataSetChanged();
 
         mBTLeScanner.start();
     }

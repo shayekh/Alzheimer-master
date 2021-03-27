@@ -30,18 +30,57 @@
         android:layout_below="@+id/txt_azimuth"
         android:id="@+id/img_compass"/>
 
-    <ScrollView
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="8"-->
+<!--        android:fillViewport="true"-->
+<!--        android:id="@+id/scrollView">-->
+<!--    </ScrollView>-->
+    <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:fillViewport="true"
-        android:id="@+id/scrollView">
-    </ScrollView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_name"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MacAddress"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_macaddr"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RSSI"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_rssi"></TextView>
+
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/tap"
+        android:layout_below="@+id/txt_azimuth"
+        android:id="@+id/img_tap"/>
 
     <Button
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="Start Scan"
         android:id="@+id/btn_scan"/>
 
