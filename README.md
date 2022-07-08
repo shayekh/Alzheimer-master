@@ -1,4 +1,6 @@
-# Alzheimer-master
+# Indoor Positioning and Navigation using Bluetooth
+Low Energy and Cloud Service in Healthcare
+Perspective
 
 People are able to explore unfamiliar surroundings with more ease
 due to navigation devices. Users can now incorporate these systems into hand-
