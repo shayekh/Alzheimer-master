@@ -1,5 +1,8 @@
-<img width="999" alt="place-locate" src="https://user-images.githubusercontent.com/19613788/177973233-77a640e4-23e7-43e3-aae3-6b78278eaaef.png">
-![App-Navi](https://user-images.githubusercontent.com/19613788/177973124-05a5e7a6-bbeb-49cb-968e-31ec837a8e9b.png)
+
+
+
+<img width="697" alt="DB-design" src="https://user-images.githubusercontent.com/19613788/177973462-f1821773-7d90-46d8-9dd2-d385bf48205d.png">
+
 # Indoor Positioning and Navigation using Bluetooth
 Low Energy and Cloud Service in Healthcare
 Perspective
